@@ -1,0 +1,10 @@
+import pandas as pd
+import quandl
+
+df = quandl.get('WIKI/GOOGL')
+
+df['HL_PCT'] = (df['Adj. High']-df['Adj. Close'])/df['Adj. Close']*100
+df['PCT_change'] = (df['Adj. Close']-df['Adj. Open'])/df['Adj. Open']*100
+
+df = df[['Adj. Close', 'Adj. Volume', 'HL_PCT', 'PCT_change']]
+print(df.head())
